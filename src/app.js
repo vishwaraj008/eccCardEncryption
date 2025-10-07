@@ -5,6 +5,7 @@ const dotenv = require('dotenv');
 const fs = require('fs');
 const path = require('path');
 
+
 // Load environment variables
 dotenv.config();
 
@@ -37,11 +38,13 @@ app.use((req, res, next) => {
 const publicKeyRoute = require('./routes/publicKeyRoute');
 const encryptRoute = require('./routes/encryptRoute');
 const decryptRoute = require('./routes/decryptRoute');
+const keyRoute = require('./routes/keyRoute');
 
 // --- Register Routes ---
 app.use('/public-key', publicKeyRoute);
 app.use('/encrypt', encryptRoute);
 app.use('/decrypt', decryptRoute);
+app.use('/keys', keyRoute);
 
 // Health check route
 app.get('/health', (req, res) => res.json({ status: 'ok', time: new Date().toISOString() }));
